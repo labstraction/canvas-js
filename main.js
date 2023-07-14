@@ -1,23 +1,39 @@
+const canvas = document.getElementById("canvas1");
+
+const ctx = canvas.getContext("2d");
 
 
+// const r1 = new Rect(400, 400, 100, 100);
 
-// const canvasCollection = document.getElementsByClassName('my-canvas');
-// const canvasA = canvasCollection[0];
-// console.log(canvasA);
+// r1.draw(ctx);
 
-// const canvasCollection2 = document.getElementsByTagName('canvas');
-// const canvasB = canvasCollection2[0];
-// console.log(canvasB);
+// function moveRect() {
+//     ctx.clearRect(0, 0, canvas.width, canvas.height)
+//     r1.animate(canvas.width, canvas.height);
+//     r1.draw(ctx);
+// }
 
-// const canvasC = document.querySelector('.my-canvas');
+// setInterval(moveRect, 1);
 
-// const canvasD = document.querySelector('#canvas1');
+const rectArray = [];
 
-// const canvasE = document.querySelector('canvas');
+for (let i = 0; i < 10000; i++) {
+    const rect = Rect.random(canvas.width, canvas.height);
+    rectArray.push(rect);  
+}
 
-// const canvasCollection3 = document.querySelectorAll('.my-canvas')
+console.log(rectArray);
 
-const canvas = document.getElementById('canvas1');
-// console.log(canvas.width);
-// console.log(canvas.height);
-const ctx = canvas.getContext('2d');
+function moveAll(){
+    for (const rect of rectArray) {
+        rect.animate(canvas.width, canvas.height);
+        rect.draw(ctx);
+    }
+    requestAnimationFrame(moveAll);
+}
+
+requestAnimationFrame(moveAll);
+
+
+//1) creare una classe circle che faccia la stessa cosa della classe Rect
+//2) create un'opera d'arte
